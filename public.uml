@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>46beb81a-cc26-4b60-b81a-1c8f893e2ef5.SCHEMA:autocycle.public</OriginalElement>
+  <nodes>
+    <node x="1020.3522727272726" y="967.0">46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auth_permission</node>
+    <node x="258.25" y="0.0">46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auto_manufacturer</node>
+    <node x="0.0" y="267.0">46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auto_trucks</node>
+    <node x="566.0" y="11.0">46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auto_category</node>
+    <node x="774.0" y="179.0">46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auto_cars</node>
+    <node x="0.0" y="1215.0">46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.django_admin_log</node>
+    <node x="564.0" y="1270.0">46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.authtoken_token</node>
+    <node x="1089.0" y="1270.0">46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auth_user_groups</node>
+    <node x="261.0" y="278.0">46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auto_mototechnics</node>
+    <node x="522.0" y="267.0">46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auto_specializedtechnique</node>
+    <node x="1269.0" y="1270.0">46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auth_group_permissions</node>
+    <node x="290.99999999999994" y="1259.0">46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auth__userprofile</node>
+    <node x="551.5" y="890.0">46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auth_user</node>
+    <node x="829.0" y="1270.0">46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auth_user_user_permissions</node>
+    <node x="478.8977272727272" y="741.0">46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.django_content_type</node>
+    <node x="287.0" y="1469.0">46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.django_session</node>
+    <node x="0.0" y="1469.0">46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.django_migrations</node>
+    <node x="1244.0454545454545" y="989.0">46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auth_group</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auto_trucks" target="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auto_category">
+      <point x="60.25" y="-170.5" />
+      <point x="180.75" y="149.0" />
+      <point x="592.0" y="149.0" />
+      <point x="-78.0" y="38.5" />
+    </edge>
+    <edge source="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auth_permission" target="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.django_content_type">
+      <point x="0.0" y="-60.5" />
+      <point x="1111.3522727272725" y="865.0" />
+      <point x="616.8977272727273" y="865.0" />
+      <point x="46.0" y="49.5" />
+    </edge>
+    <edge source="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auto_trucks" target="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auto_manufacturer">
+      <point x="-60.25" y="-170.5" />
+      <point x="60.25" y="139.0" />
+      <point x="279.25" y="139.0" />
+      <point x="-63.0" y="49.5" />
+    </edge>
+    <edge source="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auth_group_permissions" target="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auth_group">
+      <point x="52.0" y="-49.5" />
+      <point x="1425.0" y="1195.0" />
+      <point x="1356.5454545454545" y="1195.0" />
+      <point x="37.5" y="38.5" />
+    </edge>
+    <edge source="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auth_user_groups" target="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auth_user">
+      <point x="-40.0" y="-49.5" />
+      <point x="1129.0" y="1185.0" />
+      <point x="794.5" y="1185.0" />
+      <point x="108.0" y="137.5" />
+    </edge>
+    <edge source="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auto_cars" target="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auto_manufacturer">
+      <point x="-60.25" y="-258.5" />
+      <point x="834.25" y="129.0" />
+      <point x="405.25" y="129.0" />
+      <point x="63.0" y="49.5" />
+    </edge>
+    <edge source="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auto_mototechnics" target="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auto_category">
+      <point x="60.25" y="-159.5" />
+      <point x="441.75" y="159.0" />
+      <point x="644.0" y="159.0" />
+      <point x="-26.0" y="38.5" />
+    </edge>
+    <edge source="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auth_user_user_permissions" target="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auth_user">
+      <point x="-60.0" y="-49.5" />
+      <point x="889.0" y="1195.0" />
+      <point x="740.5" y="1195.0" />
+      <point x="54.0" y="137.5" />
+    </edge>
+    <edge source="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.django_admin_log" target="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auth_user">
+      <point x="67.75" y="-104.5" />
+      <point x="203.25" y="1185.0" />
+      <point x="578.5" y="1185.0" />
+      <point x="-108.0" y="137.5" />
+    </edge>
+    <edge source="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auto_mototechnics" target="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auto_manufacturer">
+      <point x="-60.25" y="-159.5" />
+      <point x="-21.0" y="49.5" />
+    </edge>
+    <edge source="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auth_group_permissions" target="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auth_permission">
+      <point x="-52.0" y="-49.5" />
+      <point x="1321.0" y="1185.0" />
+      <point x="1156.8522727272725" y="1185.0" />
+      <point x="45.5" y="60.5" />
+    </edge>
+    <edge source="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.authtoken_token" target="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auth_user">
+      <point x="0.0" y="-49.5" />
+      <point x="0.0" y="137.5" />
+    </edge>
+    <edge source="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auth__userprofile" target="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auth_user">
+      <point x="-5.6843418860808015E-14" y="-60.5" />
+      <point x="417.4999999999999" y="1195.0" />
+      <point x="632.5" y="1195.0" />
+      <point x="-54.0" y="137.5" />
+    </edge>
+    <edge source="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auth_user_user_permissions" target="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auth_permission">
+      <point x="60.0" y="-49.5" />
+      <point x="1009.0" y="1195.0" />
+      <point x="1065.8522727272725" y="1195.0" />
+      <point x="-45.5" y="60.5" />
+    </edge>
+    <edge source="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auto_specializedtechnique" target="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auto_category">
+      <point x="58.0" y="-170.5" />
+      <point x="26.0" y="38.5" />
+    </edge>
+    <edge source="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.django_admin_log" target="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.django_content_type">
+      <point x="-67.75" y="-104.5" />
+      <point x="67.75" y="865.0" />
+      <point x="524.8977272727273" y="865.0" />
+      <point x="-46.0" y="49.5" />
+    </edge>
+    <edge source="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auto_cars" target="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auto_category">
+      <point x="60.25" y="-258.5" />
+      <point x="954.75" y="119.0" />
+      <point x="748.0" y="119.0" />
+      <point x="78.0" y="38.5" />
+    </edge>
+    <edge source="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auto_specializedtechnique" target="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auto_manufacturer">
+      <point x="-58.0" y="-170.5" />
+      <point x="580.0" y="139.0" />
+      <point x="363.25" y="139.0" />
+      <point x="21.0" y="49.5" />
+    </edge>
+    <edge source="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auth_user_groups" target="46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auth_group">
+      <point x="40.0" y="-49.5" />
+      <point x="1209.0" y="1195.0" />
+      <point x="1281.5454545454545" y="1195.0" />
+      <point x="-37.5" y="38.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.4255386670798255" x="510.3089846508153" y="926.3134592536143" />
+  <SelectedNodes>
+    <node>46beb81a-cc26-4b60-b81a-1c8f893e2ef5.TABLE:autocycle.public.auth_group</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Key columns</Category>
+    <Category>Columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+

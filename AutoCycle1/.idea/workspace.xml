@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd1db312-6ce1-4c2c-9b44-ff03d0d8b3cb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../AutoCycle/auth_/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoCycle/auth_/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AutoCycle/auto/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoCycle/auto/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AutoCycle/auto/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoCycle/auto/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AutoCycle/auto/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoCycle/auto/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AutoCycle/auto/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoCycle/auto/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoCycle/auth_/signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoCycle/auth_/signals.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

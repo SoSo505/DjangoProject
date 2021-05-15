@@ -9,3 +9,10 @@ def create_user_profile_or_safe(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user=instance)
     instance.profile.save()
+
+
+@receiver(post_save, sender = User)
+def add_score(instance, **kwargs):
+    profile = instance.user_profile
+    profile.score += 1
+    profile.save()
