@@ -51,25 +51,19 @@ class CarsSerializer(serializers.ModelSerializer):
 
 
 class MototechnicsSerializer(serializers.ModelSerializer):
-    id = serializers.IntegerField(read_only=True)
     manufacturer = ManufacturerSerializer()
     category = CategorySerializer()
 
-    depth = 1
     class Meta:
         model = Mototechnics
         fields = '__all__'
 
-    def create(self, validated_data):
-        return Mototechnics.objects.create(**validated_data)
 
-        instance.save()
-        return instance
 
 
 class TrucksSerializer(serializers.ModelSerializer):
-    manufacturer = ManufacturerSerializer()
-    category = CategorySerializer(many=False)
+    manufacturer = ManufacturerSerializer(write_only=False)
+    category = CategorySerializer(write_only=False)
 
     class Meta:
         model = Trucks
@@ -82,8 +76,16 @@ class TrucksSerializer(serializers.ModelSerializer):
         return instance
 
 
-
 class SpecializedTechniqueSerializer(serializers.ModelSerializer):
+    manufacturer = ManufacturerSerializer()
+    category = CategorySerializer()
+
     class Meta:
         model = SpecializedTechnique
         fields = '__all__'
+
+    def create(self, validated_data):
+        return Mototechnics.objects.create(**validated_data)
+
+        instance.save()
+        return instance

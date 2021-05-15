@@ -6,6 +6,7 @@ from django.http import Http404
 from django.shortcuts import render
 from rest_framework import generics, viewsets, status
 from rest_framework.decorators import action, api_view, permission_classes
+from rest_framework.parsers import JSONParser
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -222,7 +223,18 @@ class MototechnicsApiView(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request):
-        serializer = MototechnicsSerializer(data=request.data)
+        moto = request.data
+        category = Category.objects.create(category_name=moto['category_name'])
+        manufacturer = Manufacturer.objects.create(brand=moto['brand'], model=moto['model'])
+
+        new_moto = Mototechnics.objects.create(type=moto['type'],
+                                               engineCapacity=moto['engineCapacity'],
+                                               yearOfManufacture=moto['yearOfManufacture'],
+                                               city=moto['city'], status=moto['status'],
+                                               mileage=moto['mileage'], price=moto['price'],
+                                               category=category, manufacturer=manufacturer)
+        new_moto.save()
+        serializer = MototechnicsSerializer(new_moto)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -230,6 +242,7 @@ class MototechnicsApiView(APIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     permission_classes = [AllowAny]
+
 
 #
 # class MototechnicsListApiView(generics.ListCreateAPIView):
@@ -259,7 +272,6 @@ class MototechnicsByBrandViewSet(viewsets.ViewSet):
         return Response(serializer.data)
 
     permission_classes = [AllowAny]
-
 
 
 class MototechnicsByBrandModelViewSet(viewsets.ViewSet):
@@ -307,7 +319,19 @@ class SpecializedTechniqueApiView(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request):
-        serializer = SpecializedTechniqueSerializer(data=request.data)
+
+        spec = request.data
+        category = Category.objects.create(category_name=spec['category_name'])
+        manufacturer = Manufacturer.objects.create(brand=spec['brand'], model=spec['model'])
+
+        new_spec = SpecializedTechnique.objects.create(type=spec['type'], producing_country=spec['producing_country'],
+                                                       typeOfEngine=spec['typeOfEngine'],
+                                                       yearOfManufacture=spec['yearOfManufacture'],
+                                                       city=spec['city'], status=spec['status'],
+                                                       mileage=spec['mileage'], price=spec['price'],
+                                                       category=category, manufacturer=manufacturer)
+        new_spec.save()
+        serializer = SpecializedTechniqueSerializer(new_spec)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -356,6 +380,16 @@ class SpecializedTechniqueByTypeApiView(APIView):
         serializer = SpecializedTechniqueSerializer(technique)
         return Response({"success": True, "data": serializer.data}, status=status.HTTP_200_OK)
 
+
+class SpecializedTechniqueTypeViewSet(viewsets.ViewSet):
+    def list(self, request, type):
+        queryset = SpecializedTechnique.objects.all().filter(type=type)
+        serializer = SpecializedTechniqueSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+    permission_classes = [AllowAny]
+
+
 class SpecializedTechniqueByBrandApiView(APIView):
     def get_object(self, brand):
         try:
@@ -377,14 +411,23 @@ def trucks_list(request):
         serializer = TrucksSerializer(trucks, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
     elif request.method == 'POST':
-        serializer = TrucksSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        trucks = request.data
+        category = Category.objects.create(category_name=trucks['category_name'])
+        manufacturer = Manufacturer.objects.create(brand=trucks['brand'], model=trucks['model'])
+
+        new_trucks = Trucks.objects.create(type=trucks['type'],
+                                           engineCapacity=trucks['engineCapacity'],
+                                           yearOfManufacture=trucks['yearOfManufacture'],
+                                           city=trucks['city'], status=trucks['status'],
+                                           typeOfEngine=trucks['typeOfEngine'],
+                                           mileage=trucks['mileage'], price=trucks['price'],
+                                           category=category, manufacturer=manufacturer)
+        new_trucks.save()
+        serializer = SpecializedTechniqueSerializer(new_trucks)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
-@api_view(['GET'])
+@api_view(['GET', 'PUT', 'DELETE'])
 # @permission_classes((AllowAny))
 def truck_detail(request, pk):
     try:
@@ -395,3 +438,55 @@ def truck_detail(request, pk):
     if request.method == 'GET':
         serializer = TrucksSerializer(truck)
         return Response(serializer.data)
+
+    elif request.method == 'PUT':
+        data = JSONParser().parse(request)
+        serializer = TrucksSerializer(truck, data=data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    elif request.method == 'DELETE':
+        truck.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class TrucksByTypeApiView1(APIView):
+    def get_object(self, type):
+        try:
+            trucks = Trucks.objects.get(type=type)
+        except SpecializedTechnique.DoesNotExist:
+            raise Http404
+        queryset = []
+        for advertisement in trucks:
+            queryset.append(advertisement)
+        return queryset
+
+    def get(self, request, type, format=None):
+        technique = self.get_object(type)
+        serializer = TrucksSerializer(technique)
+        return Response({"success": True, "data": serializer.data}, status=status.HTTP_200_OK)
+
+
+class TrucksByTypeViewSet(viewsets.ViewSet):
+    def list(self, request, type):
+        queryset = Trucks.objects.all().filter(type=type)
+        serializer = MototechnicsSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+    permission_classes = [AllowAny]
+
+
+class TrucksByBrandApiView(APIView):
+    def get_object(self, brand):
+        try:
+            return Trucks.objects.get(manufacturer__brand=brand)
+        except SpecializedTechnique.DoesNotExist:
+            raise Http404
+
+    def get(self, request, brand, format=None):
+        technique = self.get_object(brand)
+        serializer = TrucksSerializer(technique)
+        return Response({"success": True, "data": serializer.data}, status=status.HTTP_200_OK)

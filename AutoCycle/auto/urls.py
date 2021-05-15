@@ -5,7 +5,8 @@ from django.urls import path
 from auto.views import MyAdvertisements, ManufacturerViewSet, CategoryViewSet, CarsViewSet, MototechnicsApiView, \
     trucks_list, MototechnicsDetailApiView, truck_detail, SpecializedTechniqueApiView, CarBrandAdvertisements, \
     CarBrandModelAdvertisements, CarByYearViewSet, MototechnicsByTypeViewSet, MototechnicsByBrandViewSet, \
-    MototechnicsByBrandModelViewSet, SpecializedTechniqueByTypeApiView, SpecializedTechniqueByBrandApiView
+    MototechnicsByBrandModelViewSet, SpecializedTechniqueByTypeApiView, SpecializedTechniqueByBrandApiView, \
+    TrucksByBrandApiView, TrucksByTypeViewSet, SpecializedTechniqueTypeViewSet
 
 
 class SpecializedTechniqueByBrandViewSet(object):
@@ -34,10 +35,12 @@ urlpatterns = [
 
     path('trucks/', trucks_list, name='trucks_list'),
     path('trucks/<int:pk>/', truck_detail, name='truck_detail'),
+    path('trucks/type/<str:type>/', TrucksByTypeViewSet.as_view({'get': 'list'})),
+    path('trucks/<str:brand>/', TrucksByBrandApiView.as_view()),
 
     path('specializedtechnique/', SpecializedTechniqueApiView.as_view()),
     path('specializedtechnique/<int:pk>/', SpecializedTechniqueApiView.as_view()),
-    path('specializedtechnique/type/<str:type>/', SpecializedTechniqueByTypeApiView.as_view()),
+    path('specializedtechnique/type/<str:type>/', SpecializedTechniqueTypeViewSet.as_view({'get': 'list'})),
     path('specializedtechnique/<str:brand>/', SpecializedTechniqueByBrandApiView.as_view()),
 
 ]

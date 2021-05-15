@@ -91,7 +91,7 @@ class Mototechnics(models.Model):
     image1 = models.ImageField(default='none')
     image2 = models.ImageField(default='none')
     # user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, default=None)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category,default=1, on_delete=models.CASCADE)
     manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE)
 
     object = MototechnicsManager
@@ -118,7 +118,7 @@ class Trucks(models.Model):
     image1 = models.ImageField(default="none")
     image2 = models.ImageField(default="none")
     # user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, default=None)
-    category = models.ForeignKey(Category, related_name='Trucks', on_delete=models.CASCADE)
+    category = models.ForeignKey(Category,default=3, related_name='Trucks', on_delete=models.CASCADE)
     manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE)
 
     object = TrucksManager
@@ -133,9 +133,7 @@ class SpecializedTechniqueManager(models.Manager):
 
 
 class SpecializedTechnique(models.Model):
-    category = models.ForeignKey(Category, default='SpecializedTechnique',
-                                 related_name='SpecializedTechnique', on_delete=models.CASCADE)
-    manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE)
+
     type = models.CharField(default="Type", max_length=30)
     producing_country = models.CharField(max_length=30)
     yearOfManufacture = models.IntegerField(default=2020)
