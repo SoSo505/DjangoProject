@@ -35,7 +35,7 @@ class MyAdvertisements(generics.ListCreateAPIView):
 
     def get_queryset(self):
         try:
-            advertisements = Cars.objects.all().filter(user_profile__user=self.request.user)
+            advertisements = Cars.objects.all().filter(user=self.request.user)
         except EmptyResultSet:
             raise Http404
         return advertisements
@@ -48,7 +48,7 @@ class MyAdvertisementDetail(generics.RetrieveDestroyAPIView):
 
     def get_queryset(self):
         try:
-            advertisements = Cars.objects.all().filter(user_profile__user=self.request.user)
+            advertisements = Cars.objects.all().filter(userProfile__user=self.request.user)
         except EmptyResultSet:
             raise Http404
         return advertisements

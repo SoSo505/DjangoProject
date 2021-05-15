@@ -113,7 +113,7 @@ class CarsViewSet(viewsets.ViewSet):
         return Response(serializer.data)
 
     def retrieve(self, request, pk=None):
-        queryset = Cars.objects.all()
+        queryset = Cars.objects.filter(id=pk)
         serializer = CarsSerializer(queryset, many=True)
         user = get_object_or_404(queryset, pk=pk)
         return Response(serializer.data)
@@ -133,7 +133,7 @@ class CarsViewSet(viewsets.ViewSet):
                                       city=car_data['city'], status=car_data['status'],
                                       typeOfEngine=car_data['typeOfEngine'],
                                       mileage=car_data['mileage'], color=car_data['color'], price=car_data['price'],
-                                      category=category, manufacturer=manufacturer)
+                                      category=category, manufacturer=manufacturer, userProfile=request.user.userprofile)
         new_car.save()
         serializer = CarsSerializer(new_car)
         return Response(serializer.data)
@@ -421,7 +421,7 @@ def trucks_list(request):
                                            city=trucks['city'], status=trucks['status'],
                                            typeOfEngine=trucks['typeOfEngine'],
                                            mileage=trucks['mileage'], price=trucks['price'],
-                                           category=category, manufacturer=manufacturer)
+                                           category=category, manufacturer=manufacturer, userProfile=request.user.userprofile)
         new_trucks.save()
         serializer = SpecializedTechniqueSerializer(new_trucks)
         return Response(serializer.data, status=status.HTTP_201_CREATED)

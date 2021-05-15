@@ -69,6 +69,8 @@ class Cars(models.Model):
     manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE)
     category = models.ForeignKey(Category,
                                  on_delete=models.CASCADE)
+    userProfile = models.ForeignKey(UserProfile, null=True, on_delete=models.CASCADE)
+
 
     def __str__(self):
         return self.transmission
@@ -120,6 +122,8 @@ class Trucks(models.Model):
     # user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, default=None)
     category = models.ForeignKey(Category,default=3, related_name='Trucks', on_delete=models.CASCADE)
     manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE)
+    userProfile = models.ForeignKey(UserProfile, null=True, on_delete=models.CASCADE)
+
 
     object = TrucksManager
 
@@ -149,6 +153,8 @@ class SpecializedTechnique(models.Model):
     category = models.ForeignKey(Category, default='SpecializedTechnique',
                                  related_name='SpecializedTechnique', on_delete=models.CASCADE)
     manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE)
+    userProfile = models.ForeignKey(UserProfile, null=True, on_delete=models.CASCADE)
+
 
     object = SpecializedTechniqueManager
 

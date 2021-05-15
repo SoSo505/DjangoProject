@@ -6,7 +6,7 @@ from auto.views import MyAdvertisements, ManufacturerViewSet, CategoryViewSet, C
     trucks_list, MototechnicsDetailApiView, truck_detail, SpecializedTechniqueApiView, CarBrandAdvertisements, \
     CarBrandModelAdvertisements, CarByYearViewSet, MototechnicsByTypeViewSet, MototechnicsByBrandViewSet, \
     MototechnicsByBrandModelViewSet, SpecializedTechniqueByTypeApiView, SpecializedTechniqueByBrandApiView, \
-    TrucksByBrandApiView, TrucksByTypeViewSet, SpecializedTechniqueTypeViewSet
+    TrucksByBrandApiView, TrucksByTypeViewSet, SpecializedTechniqueTypeViewSet, SpecializedTechniqueDetailApiView
 
 
 class SpecializedTechniqueByBrandViewSet(object):
@@ -21,7 +21,7 @@ urlpatterns = [
          ManufacturerViewSet.as_view({'get': 'list', 'post': 'create', 'delete': 'destroy'})),
 
     path('cars/', CarsViewSet.as_view({'get': 'list', 'post': 'create'})),
-    path('cars/<int:pk>/', CarsViewSet.as_view({'get': 'list', 'post': 'create', 'delete': 'destroy'})),
+    path('cars/<int:pk>/', CarsViewSet.as_view({'get':'retrieve', 'post': 'update', 'delete': 'destroy'})),
     path('cars/year/<int:year>/', CarByYearViewSet.as_view({'get': 'list'})),
     path('cars/<str:brand>/', CarBrandAdvertisements.as_view()),
     path('cars/<str:brand>/<str:model>/', CarBrandModelAdvertisements.as_view()),
@@ -39,7 +39,7 @@ urlpatterns = [
     path('trucks/<str:brand>/', TrucksByBrandApiView.as_view()),
 
     path('specializedtechnique/', SpecializedTechniqueApiView.as_view()),
-    path('specializedtechnique/<int:pk>/', SpecializedTechniqueApiView.as_view()),
+    path('specializedtechnique/<int:pk>/', SpecializedTechniqueDetailApiView.as_view()),
     path('specializedtechnique/type/<str:type>/', SpecializedTechniqueTypeViewSet.as_view({'get': 'list'})),
     path('specializedtechnique/<str:brand>/', SpecializedTechniqueByBrandApiView.as_view()),
 
